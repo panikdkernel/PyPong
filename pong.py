@@ -35,8 +35,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = 2
-ball.dy = 2
+ball.dx = 0.5
+ball.dy = 0.5
 
 # Game Functions
 def paddle_a_up():
@@ -73,3 +73,20 @@ while True:
     # Ball movements
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
+
+    # Border Checking
+    if ball.ycor() > 290:
+        ball.sety(290)
+        ball.dy *=-1
+    
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        ball.dy *=-1
+    
+    if ball.xcor() > 390:
+        ball.goto(0,0)
+        ball.dx *= -1
+
+    if ball.xcor() < -390:
+        ball.goto(0,0)
+        ball.dx *= -1
